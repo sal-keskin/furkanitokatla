@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Counter</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('background.jpg') center/cover no-repeat;
+    text-align: center;
+    color: white;
+  }
+  .counter {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+  }
+  .button-container {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .button {
+    padding: 20px;
+    border: none;
+    background-color: #000;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  .button:focus {
+    outline: none;
+  }
+  .button:active {
+    background-color: #333;
+  }
+  .global-counter {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+  }
+  #gif {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Show the first frame initially */
+  }
+</style>
+</head>
+<body>
+<div class="global-counter">Global Clicks: <span id="global-count">0</span></div>
+<div class="counter">Local Clicks: <span id="local-count">0</span></div>
+<div class="button-container">
+  <img id="gif" src="https://s5.gifyu.com/images/SivFS.png" alt="Click GIF">
+  <button class="button" onclick="incrementCounter()">Click Me</button>
+</div>
+
+<script>
+  let globalCount = 428794; // Example global count
+  let localCount = 0;
+  let gifDuration = 1285; // Duration of the GIF in milliseconds
+  let gifPlaying = false; // Flag to prevent multiple GIF plays
+
+  function updateCounters() {
+    document.getElementById('local-count').textContent = localCount;
+    document.getElementById('global-count').textContent = globalCount.toLocaleString();
+  }
+
+  function incrementCounter() {
+    if (!gifPlaying) {
+      localCount++;
+      globalCount++;
+      updateCounters();
+      playGif();
+    }
+  }
+
+  function playGif() {
+    gifPlaying = true; // Set the flag to prevent multiple plays
+    const gif = document.getElementById('gif');
+    gif.src = "https://s5.gifyu.com/images/Siv0c.gif"; // Change to the GIF to start playing
+
+    setTimeout(function() {
+      gif.src = "https://s5.gifyu.com/images/SivFS.png"; // Change back to the first frame after playing
+      gifPlaying = false; // Reset the flag to allow playing again
+    }, gifDuration);
+  }
+</script>
+</body>
+</html>
