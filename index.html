@@ -13,9 +13,13 @@
     text-align: center;
     color: white;
   }
+  .top-title {
+    font-size: 4vw; /* Dynamic font size based on the width of the screen */
+    padding-top: 5vh; /* Padding from the top of the viewport */
+  }
   .counter {
     position: absolute;
-    top: 20%;
+    bottom: 20%; /* Moved to the bottom of the button */
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2em;
@@ -52,24 +56,22 @@
     width: 100%; /* Make the GIF container full width */
     height: auto; /* Maintain the aspect ratio of the content */
     position: relative; /* Relative positioning for inner elements */
-    overflow: hidden; /* Hide overflow */
   }
   #gif {
     width: 100%; /* Make the GIF full width within the container */
     height: auto; /* Maintain the aspect ratio of the content */
-    display: block; /* Show the first frame initially */
   }
 </style>
 </head>
 <body>
-<div class="global-counter">Global Clicks: <span id="global-count">0</span></div>
+<div class="top-title">Furkanı Tokatla</div>
 <div id="gif-container">
   <img id="gif" src="https://s5.gifyu.com/images/SivFS.png" alt="Click GIF">
 </div>
-<div class="counter">Local Clicks: <span id="local-count">0</span></div>
 <div class="button-container">
   <button class="button" onclick="incrementCounter()">Tokatla</button>
 </div>
+<div class="counter">Toplam tokat: <span id="local-count">0</span></div>
 
 <script>
   let globalCount = 428794; // Example global count
@@ -79,13 +81,11 @@
 
   function updateCounters() {
     document.getElementById('local-count').textContent = localCount;
-    document.getElementById('global-count').textContent = globalCount.toLocaleString();
   }
 
   function incrementCounter() {
     if (!gifPlaying) {
       localCount++;
-      globalCount++;
       updateCounters();
       playGif();
     }
