@@ -9,7 +9,7 @@
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('background.jpg') center/cover no-repeat;
+    background: #000; /* Assuming a dark theme; replace with your background image if needed */
     text-align: center;
     color: white;
   }
@@ -29,7 +29,7 @@
   .button {
     padding: 20px;
     border: none;
-    background-color: #000;
+    background-color: #333;
     color: white;
     border-radius: 50%;
     font-size: 1.5em;
@@ -39,7 +39,7 @@
     outline: none;
   }
   .button:active {
-    background-color: #333;
+    background-color: #555;
   }
   .global-counter {
     position: absolute;
@@ -48,19 +48,27 @@
     transform: translate(-50%, -50%);
     font-size: 1.5em;
   }
+  #gif-container {
+    width: 100%; /* Make the GIF container full width */
+    height: auto; /* Maintain the aspect ratio of the content */
+    position: relative; /* Relative positioning for inner elements */
+    overflow: hidden; /* Hide overflow */
+  }
   #gif {
-    max-width: 100%;
-    height: auto;
+    width: 100%; /* Make the GIF full width within the container */
+    height: auto; /* Maintain the aspect ratio of the content */
     display: block; /* Show the first frame initially */
   }
 </style>
 </head>
 <body>
 <div class="global-counter">Global Clicks: <span id="global-count">0</span></div>
+<div id="gif-container">
+  <img id="gif" src="https://s5.gifyu.com/images/SivFS.png" alt="Click GIF">
+</div>
 <div class="counter">Local Clicks: <span id="local-count">0</span></div>
 <div class="button-container">
-  <img id="gif" src="https://s5.gifyu.com/images/SivFS.png" alt="Click GIF">
-  <button class="button" onclick="incrementCounter()">Click Me</button>
+  <button class="button" onclick="incrementCounter()">Tokatla</button>
 </div>
 
 <script>
